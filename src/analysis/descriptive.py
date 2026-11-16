@@ -25,8 +25,8 @@ def load_returns():
 
     required_columns = [
         "Data",
-        "Ret_LREN3_pct",
-        "Ret_IBOV_pct",
+        "Ret_LREN3",
+        "Ret_IBOV",
     ]
 
     missing = [
@@ -42,12 +42,12 @@ def load_returns():
 
     returns = returns[required_columns].copy()
 
-    returns["Ret_LREN3_pct"] = pd.to_numeric(
-        returns["Ret_LREN3_pct"], errors="coerce"
+    returns["Ret_LREN3"] = pd.to_numeric(
+        returns["Ret_LREN3"], errors="coerce"
     )
 
-    returns["Ret_IBOV_pct"] = pd.to_numeric(
-        returns["Ret_IBOV_pct"], errors="coerce"
+    returns["Ret_IBOV"] = pd.to_numeric(
+        returns["Ret_IBOV"], errors="coerce"
     )
 
     returns = returns.dropna().sort_values("Data")
@@ -58,8 +58,8 @@ def load_returns():
 def calculate_daily_statistics(returns):
 
     assets = {
-        "LREN3": "Ret_LREN3_pct",
-        "IBOV": "Ret_IBOV_pct",
+        "LREN3": "Ret_LREN3",
+        "IBOV": "Ret_IBOV",
     }
 
     statistics = {}
@@ -92,7 +92,7 @@ def calculate_monthly_returns(returns):
     data["Month"] = data["Data"].dt.to_period("M")
 
     monthly = data.groupby("Month")[
-        ["Ret_LREN3_pct", "Ret_IBOV_pct"]
+        ["Ret_LREN3", "Ret_IBOV"]
     ].sum()
 
     monthly = (np.exp(monthly / 100) - 1) * 100
@@ -106,8 +106,8 @@ def calculate_monthly_returns(returns):
 def calculate_monthly_statistics(monthly_returns):
 
     assets = {
-        "LREN3": "Ret_LREN3_pct",
-        "IBOV": "Ret_IBOV_pct",
+        "LREN3": "Ret_LREN3",
+        "IBOV": "Ret_IBOV",
     }
 
     statistics = {}
@@ -133,7 +133,7 @@ def calculate_monthly_statistics(monthly_returns):
 def calculate_correlation(returns):
 
     return returns[
-        ["Ret_LREN3_pct", "Ret_IBOV_pct"]
+        ["Ret_LREN3", "Ret_IBOV"]
     ].corr()
 
 

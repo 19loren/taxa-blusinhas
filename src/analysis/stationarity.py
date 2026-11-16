@@ -69,22 +69,22 @@ def calculate_stationarity_tests(prices, returns):
 
     series_to_test = [
         (
-            np.log(prices["LREN3"]),
+            np.log(prices["Fechamento_LREN3"]),
             "Log price LREN3",
             "ct"
         ),
         (
-            np.log(prices["IBOV"]),
+            np.log(prices["Fechamento_IBOV"]),
             "Log price IBOV",
             "ct"
         ),
         (
-            returns["Ret_LREN3_pct"],
+            returns["Ret_LREN3"],
             "LREN3 daily log returns",
             "c"
         ),
         (
-            returns["Ret_IBOV_pct"],
+            returns["Ret_IBOV"],
             "IBOV daily log returns",
             "c"
         )
