@@ -26,11 +26,11 @@ def load_data():
 def estimate_market_model(returns):
 
     data = returns[
-        ["Data", "Ret_LREN3_pct", "Ret_IBOV_pct"]
+        ["Data", "Ret_LREN3", "Ret_IBOV"]
     ].dropna().copy()
 
-    y = data["Ret_LREN3_pct"]
-    X = data[["Ret_IBOV_pct"]]
+    y = data["Ret_LREN3"]
+    X = data[["Ret_IBOV"]]
 
     X = sm.add_constant(X)
 

@@ -34,11 +34,11 @@ def load_data():
 def estimate_market_model(returns):
 
     data = returns[
-        ["Ret_LREN3_pct", "Ret_IBOV_pct"]
+        ["Ret_LREN3", "Ret_IBOV"]
     ].dropna()
 
-    y = data["Ret_LREN3_pct"]
-    X = sm.add_constant(data["Ret_IBOV_pct"])
+    y = data["Ret_LREN3"]
+    X = sm.add_constant(data["Ret_IBOV"])
 
     model = sm.OLS(y, X).fit()
 

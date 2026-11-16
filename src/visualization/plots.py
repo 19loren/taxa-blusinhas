@@ -79,14 +79,14 @@ def plot_returns(returns):
 
     ax.plot(
         returns["Data"],
-        returns["Ret_LREN3_pct"],
+        returns["Ret_LREN3"],
         label="LREN3",
         alpha=0.7
     )
 
     ax.plot(
         returns["Data"],
-        returns["Ret_IBOV_pct"],
+        returns["Ret_IBOV"],
         label="IBOV",
         alpha=0.7
     )
@@ -109,8 +109,8 @@ def plot_returns(returns):
 def plot_return_distributions(returns):
 
     assets = {
-        "LREN3": "Ret_LREN3_pct",
-        "IBOV": "Ret_IBOV_pct"
+        "LREN3": "Ret_LREN3",
+        "IBOV": "Ret_IBOV"
     }
 
     for asset, column in assets.items():
